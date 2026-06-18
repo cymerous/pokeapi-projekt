@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class BannedPokemons extends Model
 {
-    //
+    protected $fillable = ['name'];
 }

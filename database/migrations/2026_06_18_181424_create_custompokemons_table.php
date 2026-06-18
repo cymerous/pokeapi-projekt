@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->json('types');
             $table->integer('height')->default(0);
-            $table->integer('width')->default(0);
+            $table->integer('weight')->default(0);
             $table->timestamps();
         });
     }

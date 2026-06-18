@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Custompokemons extends Model
 {
-    protected $fillableData = ['name', 'types', 'height', 'width'];
+    protected $fillable = ['name', 'types', 'height', 'weight'];
 
-    protected $types = [
+    protected $casts = [
         'types' => 'array'
     ];
 }
