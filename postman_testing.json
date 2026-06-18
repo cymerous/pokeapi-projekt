@@ -7,12 +7,9 @@
   },
   "item": [
     {
-      "name": "New Request",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
+      "name": "List Pokemons Information (Public)",
       "request": {
-        "method": "GET",
+        "method": "POST",
         "header": [],
         "body": {
           "mode": "raw",
@@ -40,6 +37,139 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "Ban Pokemon (Admin)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-SUPER-SECRET-KEY",
+            "value": "{{ ADMIN_KEY }}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"charizard\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/banned",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "banned"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Unban Pokemon (Admin)",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "LIst Banned Pokemons (Admin)",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Add Custom Pokemon (Admin)",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true,
+        "disabledSystemHeaders": {
+          "accept": true
+        }
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "X-SUPER-SECRET-KEY",
+            "value": "{{ ADMIN_KEY }}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"test_pokemon\",\r\n    \"types\": [\"code\", \"flying\"],\r\n    \"height\": 20,\r\n    \"weight\": 40\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/pokemon",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "pokemon"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": " ADMIN_KEY ",
+      "value": ""
     }
   ]
 }
