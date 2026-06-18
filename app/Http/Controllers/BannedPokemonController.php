@@ -21,7 +21,7 @@ class BannedPokemonController extends Controller
 
         $name = strtolower(trim($req->input('name')));
 
-        if (BannedPokemons::whereIn('name', $name)->exists()) return response()->json(['message' => "Pokemon with name {$name} is already banned"], 400);
+        if (BannedPokemons::where('name', $name)->exists()) return response()->json(['message' => "Pokemon with name {$name} is already banned"], 404);
 
         $banned = BannedPokemons::create(['name' => $name]);
         return response()->json($banned, 201);
@@ -30,7 +30,7 @@ class BannedPokemonController extends Controller
     // DELETE - unban pokemon
     public function remove(string $name): JsonResponse {
         $name = strtolower(trim($name));
-        $pokemon = BannedPokemons::whereIn('name', $name)->first();
+        $pokemon = BannedPokemons::where('name', $name)->first();
         if (!$pokemon) return response()->json(['message' => "Pokemon with name {$name} not found."]);
 
         $pokemon->delete();

@@ -15,8 +15,8 @@ class PokemonService {
             return strtolower(trim($n));
         }, $names);
 
-        $banned = BannedPokemons::whereIn('name', $parsedNames)->pluck('name')->toArray();
-        $customs = CustomPokemons::whereIn('name', $parsedNames)->get();
+        $banned = array_map('strtolower', BannedPokemons::whereIn('name', $parsedNames)->pluck('name')->toArray());
+        $customs = CustomPokemons::where('name', $parsedNames)->get();
 
         foreach ($parsedNames as $name) {
             if (in_array($name, $banned)) continue;
