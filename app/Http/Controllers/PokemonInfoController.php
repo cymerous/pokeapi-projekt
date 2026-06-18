@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BannedPokemons;
 use App\Services\PokemonService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

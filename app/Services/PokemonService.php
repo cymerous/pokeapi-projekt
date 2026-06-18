@@ -2,7 +2,7 @@
 namespace App\Services;
 
 use App\Models\BannedPokemons;
-use App\Models\Custompokemons;
+use App\Models\CustomPokemons;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
@@ -16,7 +16,7 @@ class PokemonService {
         }, $names);
 
         $banned = BannedPokemons::whereIn('name', $parsedNames)->pluck('name')->toArray();
-        $customs = Custompokemons::whereIn('name', $parsedNames)->get()->keyBy('name');
+        $customs = CustomPokemons::whereIn('name', $parsedNames)->get();
 
         foreach ($parsedNames as $name) {
             if (in_array($name, $banned)) continue;
